@@ -23,11 +23,20 @@ public class Day
 		for(int r = 1; r<shifts.length+1; r++)
 		{
 			int c = 1;
+			String numEmployeesString;
 			if(EmployerInfo.getDays().length > 0)
 			{
 				c = (EmployerInfo.getDays().length*2)+1;
 			}
-			shifts[r-1] = new Shift(this, managerInfo[r][c], Integer.parseInt(managerInfo[r][c+1])); 
+			if(c == 13)
+			{
+				numEmployeesString = managerInfo[r][c+1].substring(0, managerInfo[r][c+1].length()-1);
+			}
+			else
+			{
+				numEmployeesString = managerInfo[r][c+1];
+			}
+			shifts[r-1] = new Shift(this, managerInfo[r][c], Integer.parseInt(numEmployeesString));
 		}
 	}
 	
